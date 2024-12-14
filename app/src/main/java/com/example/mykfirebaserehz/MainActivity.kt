@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadImageToFirebase(thereIsAFace: String) {
+    private fun uploadImageToFirebase(whatNumberIs: String) {
         val reference: StorageReference = storageReference.child("images/" + UUID.randomUUID().toString())
 
         reference.putFile(Miuri!!).addOnSuccessListener {
@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
                 val miURL = uri.toString()
                 val key = databaseReference.child("Photo").push().key
                 if (key != null) {
-                    val photo = Photo(nombre, miURL, thereIsAFace, key)
+                    val photo = Photo(nombre, miURL, whatNumberIs, key)
                     databaseReference.child("Photo").push().setValue(photo)
                     Toast.makeText(applicationContext, "Dato agregado", Toast.LENGTH_LONG).show()
                     binding.txtnombre.setText("")
@@ -305,8 +305,8 @@ class MainActivity : AppCompatActivity() {
                         val nombre: String = postSnapshot1.child("nombre").value.toString()
                         val key: String = postSnapshot1.child("key").value.toString()
                         val urlImagen: String = postSnapshot1.child("urlImagen").value.toString()
-                        val isAFace: String = postSnapshot1.child("aface").value.toString()
-                        val c = Photo(nombre, urlImagen, isAFace, key)
+                        val whatNumberis: String = postSnapshot1.child("whatNumber").value.toString()
+                        val c = Photo(nombre, urlImagen, whatNumberis, key)
                         myPhotos.add(c)
                     }
                 }

@@ -32,7 +32,7 @@ class MyAdapter(private val context: Context, private val arraylist: java.util.A
         imgimagen  = convertView.findViewById(R.id.imgimagen)
 
         txtminombre.text = arraylist[position].nombre
-        txtmialias.text = arraylist[position].isAFace
+        txtmialias.text = arraylist[position].whatNumber
 
         Glide.with(context)
             .load(arraylist.get(position).urlImagen)
